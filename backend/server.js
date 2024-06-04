@@ -16,23 +16,21 @@ mongoose.set('strictQuery', true);
 
 //middlewares
 
-const allowedOrigins = [
-  'http://localhost:3000', // Local development
-  'https://movie-lists-client.vercel.app' // Deployed frontend
-];
-// app.use(cors({
-//     origin: 'http://localhost:3000',
-//     credentials: true // Enable credentials
-// }));
+
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
+    // origin: 'http://localhost:3000',
+    origin: 'https://movie-lists-client.vercel.app',
+    credentials: true // Enable credentials
 }));
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   }
+// }));
 app.use(express.json());
 
 //db config
