@@ -14,14 +14,30 @@ const port = 3002
 const URI = process.env.MONGO_URI;
 mongoose.set('strictQuery', true);
 
+
+const allowedOrigins = [
+  'http://localhost:3000', // Local development
+  'https://movie-lists-client.vercel.app' // Deployed frontend
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // Enable credentials
+}));
 //middlewares
 app.use(express.json())
 
-app.use(cors({
-    // origin: 'http://localhost:3000',
-    origin: 'https://movie-lists-client.vercel.app/',
-    credentials: true // Enable credentials
-}));
+// app.use(cors({
+//     // origin: 'http://localhost:3000',
+//     origin: 'https://movie-lists-client.vercel.app/',
+//     credentials: true // Enable credentials
+// }));
 
 //db config
 mongoose
