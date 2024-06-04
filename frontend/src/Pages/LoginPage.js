@@ -113,8 +113,8 @@ const LoginPage = () => {
             // Redirect user after successful login
             navigate('/dashboard'); // Replace '/dashboard' with your desired route
         } catch (error) {
-            console.log("Login Error", error.response?.data?.error || error.message);
-            alert("Login failed\n" + (error.response?.data?.error || error.message));
+            // console.log("Login Error", error.response?.data?.error || error.message);
+            alert("Login failed");
         }
     };
 

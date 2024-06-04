@@ -55,6 +55,10 @@ mongoose
     try {
       const { name, email, password } = req.body;
       console.log(req.body);
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(400).send({ error: "User already registered with this email" });
+      }
       const hashedPassword = await bcrypt.hash(password, 10);
   
       const user = new User({ username: name,email, password: hashedPassword });
@@ -69,10 +73,10 @@ mongoose
 app.post("/api/login",async (req, res) => {
     try {
       const { email, password } = req.body;
-      console.log(req.body,"  login backend -1 ");
+      // console.log(req.body,"  login backend -1 ");
       const user = await User.findOne({ email });
-      console.log(user , " login backend console-2");
-      console.log(user._id , " login backend console-3");
+      // console.log(user , " login backend console-2");
+      // console.log(user._id , " login backend console-3");
       if (!user) {
         throw new Error("Invalid login credentials");
       }
@@ -83,7 +87,7 @@ app.post("/api/login",async (req, res) => {
       const token = await jwt.sign({ userId: user._id }, "secretKey", {
         expiresIn: "1h",
       });
-      console.log("Token" + token, "login backend -3 ");
+      // console.log("Token" + token, "login backend -3 ");
       res.send({ message: "Login successful", token }); // Send token in response
     } catch (error) {
       res.status(401).send({ error: error.message });

@@ -19,7 +19,8 @@ const SignupPage = () => {
             alert(response.data.message + " \nPlease Login now");
             navigate('/login');
           } catch (error) {
-            console.error('Signup error:', error.response.data);
+            // console.error('Signup error:', error.response.data);
+             alert("alread regostred or\n" +error.response?.data?.error || error.message )
           }
     }
 
