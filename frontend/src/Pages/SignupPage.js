@@ -13,7 +13,7 @@ const SignupPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/api/signup',
+            const response = await axios.post('https://movie-lists-server.vercel.app/api/signup',
              { name, email, password });
             console.log('Signup successful!', response.data.message);
             alert(response.data.message + " \nPlease Login now");

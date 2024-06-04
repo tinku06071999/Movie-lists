@@ -15,12 +15,25 @@ const URI = process.env.MONGO_URI;
 mongoose.set('strictQuery', true);
 
 //middlewares
-app.use(express.json())
 
+const allowedOrigins = [
+  'http://localhost:3000', // Local development
+  'https://movie-lists-client.vercel.app' // Deployed frontend
+];
+// app.use(cors({
+//     origin: 'http://localhost:3000',
+//     credentials: true // Enable credentials
+// }));
 app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true // Enable credentials
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
+app.use(express.json());
 
 //db config
 mongoose

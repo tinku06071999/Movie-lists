@@ -13,7 +13,7 @@ const EditListNamePopup = ({ listId, currentName, onClose, onNameUpdated }) => {
         try {
             const token = localStorage.getItem('token');
             const response = await axios.patch(
-                `http://localhost:3001/api/lists/${listId}`,
+                `https://movie-lists-server.vercel.app/api/lists/${listId}`,
                 { name: newName },
                 {
                     headers: {

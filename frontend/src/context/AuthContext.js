@@ -17,7 +17,7 @@
 
 //   const verifyToken = async (token) => {
 //     try {
-//       const response = await axios.post('http://localhost:3001/api/verify-token', { token });
+//       const response = await axios.post('https://movie-lists-server.vercel.app/api/verify-token', { token });
 //       setUser(response.data.user);
 //     } catch (error) {
 //       setToken('');

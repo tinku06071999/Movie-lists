@@ -15,7 +15,7 @@
 //     const handleSubmit = async (e) =>{
 //         e.preventDefault();
 //         try {
-//             const response = await axios.post('http://localhost:3001/api/login',{
+//             const response = await axios.post('https://movie-lists-server.vercel.app/api/login',{
 //                 email,
 //                 password,
 //            });
@@ -101,7 +101,7 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/api/login', {
+            const response = await axios.post('https://movie-lists-server.vercel.app/api/login', {
                 email,
                 password,
             });

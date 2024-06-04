@@ -18,12 +18,12 @@
 //       const userId = localStorage.getItem('userId'); // Assuming userId is stored in localStorage when the user logs in
 
 //       const [myListsResponse, publicListsResponse] = await Promise.all([
-//         axios.get('http://localhost:3001/api/my-lists', {
+//         axios.get('https://movie-lists-server.vercel.app/api/my-lists', {
 //           headers: {
 //             Authorization: `Bearer ${token}`
 //           }
 //         }),
-//         axios.get('http://localhost:3001/api/public-lists', {
+//         axios.get('https://movie-lists-server.vercel.app/api/public-lists', {
 //           headers: {
 //             Authorization: `Bearer ${token}`
 //           }
@@ -110,12 +110,12 @@ const ListDetailPage = () => {
       const userId = localStorage.getItem('userId');
 
       const [myListsResponse, publicListsResponse] = await Promise.all([
-        axios.get('http://localhost:3001/api/my-lists', {
+        axios.get('https://movie-lists-server.vercel.app/api/my-lists', {
           headers: {
             Authorization: `Bearer ${token}`
           }
         }),
-        axios.get('http://localhost:3001/api/public-lists', {
+        axios.get('https://movie-lists-server.vercel.app/api/public-lists', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -150,7 +150,7 @@ const ListDetailPage = () => {
   const onDelete = async(movieId) =>{
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3001/api/lists/${listId}/movies/${movieId}`, {
+      await axios.delete(`https://movie-lists-server.vercel.app/api/lists/${listId}/movies/${movieId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
