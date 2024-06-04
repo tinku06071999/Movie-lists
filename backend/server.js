@@ -18,8 +18,8 @@ mongoose.set('strictQuery', true);
 
 
 app.use(cors({
-    // origin: 'http://localhost:3000',
-    origin: 'https://movie-lists-client.vercel.app',
+    origin: 'http://localhost:3000',
+    // origin: 'https://movie-lists-client.vercel.app',
     credentials: true // Enable credentials
 }));
 // app.use(cors({
