@@ -32,12 +32,12 @@ const DashboardPage = () => {
       const userId = localStorage.getItem('userId'); // Assuming userId is stored in localStorage when the user logs in
   
       const [myListsResponse, publicListsResponse] = await Promise.all([
-        axios.get('https://movie-lists-server.vercel.app/api/my-lists', {
+        axios.get('http://localhost:3001/api/my-lists', {
           headers: {
             Authorization: `Bearer ${token}`
           }
         }),
-        axios.get('https://movie-lists-server.vercel.app/api/public-lists', {
+        axios.get('http://localhost:3001/api/public-lists', {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -63,7 +63,7 @@ const DashboardPage = () => {
 
   const handleSearch = async (searchTerm) => {
     try {
-      const response = await axios.get(`http://www.omdbapi.com/?apikey=32269e4f&s=${searchTerm}`);
+      const response = await axios.get(`http://www.omdbapi.com/?apikey=11aaa04b&s=${searchTerm}`);
       if (response.data.Response === "True") {
         setMovies(response.data.Search);
         setError('');
@@ -85,7 +85,7 @@ const DashboardPage = () => {
       return;
     }
     try {
-      const response = await axios.post('https://movie-lists-server.vercel.app/api/create', {
+      const response = await axios.post('http://localhost:3001/api/create', {
         name: listName,
         isPublic,
       }, {
@@ -109,7 +109,7 @@ const DashboardPage = () => {
       return;
     }
     try {
-      await axios.post(`https://movie-lists-server.vercel.app/api/add-movie/${selectedListId}`, {
+      await axios.post(`http://localhost:3001/api/add-movie/${selectedListId}`, {
         imdbID: movie.imdbID,
         title: movie.Title,
         year: movie.Year,
@@ -140,7 +140,7 @@ const DashboardPage = () => {
   const handleDeleteList = async (listId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`https://movie-lists-server.vercel.app/api/lists/${listId}`, {
+      await axios.delete(`http://localhost:3001/api/lists/${listId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
