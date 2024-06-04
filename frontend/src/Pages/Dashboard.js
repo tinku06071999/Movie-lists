@@ -63,7 +63,7 @@ const DashboardPage = () => {
 
   const handleSearch = async (searchTerm) => {
     try {
-      const response = await axios.get(`https://www.omdbapi.com/?apikey=11aaa04b&s=${searchTerm}`);
+      const response = await axios.get(`https://www.omdbapi.com/?apikey=32269e4f&s=${searchTerm}`);
       if (response.data.Response === "True") {
         setMovies(response.data.Search);
         setError('');
